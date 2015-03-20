@@ -113,7 +113,7 @@ module CalendarHelper
     last_weekday = last_day_of_week(options[:first_day_of_week])
 
     day_names = (!defined?(I18n) || I18n.t("date.day_names").include?("missing")) ? Date::DAYNAMES : I18n.t("date.day_names")
-    abbr_day_names = (!defined?(I18n) || I18n.t("date.abbr_day_names").include?("missing")) ? Date::ABBR_DAYNAMES : I18n.t("date.abbr_day_names")
+    abbr_day_names = (!defined?(I18n) || I18n.t("date.abbr_day_names").include?("missing")) ? Date::ABBR_DAYNAMES.map{|day|day[0]} : I18n.t("date.abbr_day_names").map{|day|day[0]}
     week_days = (0..6).to_a
     first_weekday.times do
       week_days.push(week_days.shift)
